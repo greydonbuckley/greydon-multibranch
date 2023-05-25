@@ -26,11 +26,6 @@ pipeline {
                         sh 'mvn -Dtest=com.sndevops.eng.App1Test test'                     
                 }
             }     
-            stage("register") {
-                      steps {
-                      snDevOpsArtifact(artifactsPayload: """{"artifacts": [{"name": "mbartifact", "version": "1.0.${env.BUILD_NUMBER}","semanticVersion": "1.0.${env.BUILD_NUMBER}","repositoryName": "mbrepository"}]}""")
-                      snDevOpsPackage(name: "mbpackage", artifactsPayload: """{"artifacts":[{"name": "mbartifact", "version": "1.0.${env.BUILD_NUMBER}", "repositoryName": "mbrepository"}]}""")
-              }
             }
               
         }
@@ -69,5 +64,10 @@ pipeline {
       }
      
     }
+            stage("register") {
+                      steps {
+                      snDevOpsArtifact(artifactsPayload: """{"artifacts": [{"name": "mbartifact", "version": "1.0.${env.BUILD_NUMBER}","semanticVersion": "1.0.${env.BUILD_NUMBER}","repositoryName": "mbrepository"}]}""")
+                      snDevOpsPackage(name: "mbpackage", artifactsPayload: """{"artifacts":[{"name": "mbartifact", "version": "1.0.${env.BUILD_NUMBER}", "repositoryName": "mbrepository"}]}""")
+              }
      
   }
