@@ -45,6 +45,9 @@ pipeline {
 
        stage("deploy") {
          stages{
+            stage('register') {
+                snDevOpsArtifact(artifactsPayload: """{"artifacts": [{"name": "mbartifact", "version": "1.0.${env.BUILD_NUMBER}","semanticVersion": "1.0.${env.BUILD_NUMBER}","repositoryName": "mbrepository"}]}""")
+            }
              stage('deploy UAT') {
                steps{
 
