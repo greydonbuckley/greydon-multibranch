@@ -26,6 +26,14 @@ pipeline {
                        sh 'mvn -Dtest=com.sndevops.eng.App1Test test'
           }
         }
+        stage('Custom Test Step') {
+                steps {
+                  sh '''
+                    echo "{\\"name\\":\\"Functional Test Suite\\",\\"result\\":\\"pass\\",\\"buildNumber\\":\\"$BUILD_NUMBER\\",\\"stageName\\":\\"Test\\",\\"pipelineName\\":\\"$JOB_NAME\\"}" > functional-results.json
+                  '''
+                  archiveArtifacts artifacts: '**/functional-results.json'
+                }
+        }
       }
          post {
              always {
