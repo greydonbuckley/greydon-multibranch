@@ -3,7 +3,7 @@ pipeline {
    tools {
       maven 'Maven'
    }
-   // stages {
+   stages {
    //      stage('Prep') {
    //          steps {
    //              sh '''
@@ -13,8 +13,8 @@ pipeline {
    //          }
    //      }
        
-     stage("test") {
-           stages {
+     // stage("test") {
+           // stages {
               stage('Custom Test Step') {
                    steps {
                      sh '''
@@ -24,9 +24,9 @@ pipeline {
                      archiveArtifacts artifacts: '**/functional-results.json'
               }
            }
-        }
-      }
-    // }
+        // }
+      // }
+    }
     post {
        always {
           sleep 10
