@@ -4,6 +4,11 @@ pipeline {
       maven 'Maven'
    }
    stages {
+        stage('Prep') {
+            steps {
+                deleteDir()
+            }
+        }
        stage("build") {
            steps {
                echo "Building" 
@@ -38,7 +43,6 @@ pipeline {
           post {
               always {
                  junit '**/target/surefire-reports/*.xml'
-                 deleteDir()
               }
         }
       
@@ -75,5 +79,10 @@ pipeline {
         }
       }
      
+    }
+    post {
+       always {
+          deleteDir()
+       }
     }
   }
