@@ -7,7 +7,7 @@ pipeline {
         stage('Prep') {
             steps {
                 sh '''
-                  rm functional-results.json
+                  ls -l
                 '''
             }
         }
