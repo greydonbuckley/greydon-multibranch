@@ -9,7 +9,7 @@ pipeline {
                 sh '''
                   ls -l
                 '''
-               deleteDir()
+               //deleteDir()
             }
         }
        
