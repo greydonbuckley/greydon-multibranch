@@ -32,6 +32,8 @@ pipeline {
                        echo "{\\"name\\":\\"Functional Test Suite\\",\\"result\\":\\"fail\\",\\"buildNumber\\":\\"$BUILD_NUMBER\\",\\"stageName\\":\\"Test\\",\\"pipelineName\\":\\"$JOB_NAME\\"}" > functional-results.json
                      '''
                      archiveArtifacts artifacts: '**/functional-results.json'
+            deleteDir()
+                      
                    }
            }
         }
