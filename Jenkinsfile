@@ -6,7 +6,9 @@ pipeline {
    stages {
         stage('Prep') {
             steps {
-                echo "deleteDir()"
+                sh '''
+                  rm functional-results.json
+                '''
             }
         }
        stage("build") {
